@@ -27,6 +27,10 @@
 ├─config                          # 项目全局配置文件
 └─src
     ├─ index.html              # 项目入口页面
+    ├─ problem.html            # 订单详情页面
+    ├─ distributor-users-list.html  #商品管理页面
+    ├─ distributor-power-manage.html  #商品新增页面
+    ├─ knowledge-base.html      #类目管理页面
     │
     │
     ├─ css                 # 样式表

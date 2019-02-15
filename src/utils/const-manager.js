@@ -33,7 +33,9 @@ const POP_TIP = {
     fileFormatFail: '您上传的文件格式不正确！',//by qitian
     completeInfo: '请完善信息',//by qitian
     checkInfo: '请核对信息',//,by qitian
-    confirm: '您确定执行此操作吗？'
+    confirm: '您确定执行此操作吗？',
+    checkStatus: '订单已取消',
+    finishStatus: '订单已完结',
 };
 
 /**
@@ -77,10 +79,11 @@ const REGEX = {
  * @Author qitian
  */
 const AJAX_URL = {
-    login: requestJson ? '../../jsonDatas/login.json' : '',
+    login: requestJson ? '../../jsonDatas/login.json' : 'requestUrl + "api/generate/userinformation/selectAccount"',
     personDataTab: requestJson ? '../../jsonDatas/personDataTab.json' : '',
     personProblem: requestJson ? '../../jsonDatas/personProblem.json' : '',
     loginLog: requestJson ? '../../jsonDatas/loginLog.json' : '',
+    //商品类目接口
     knowledgeData: requestJson ? '../../jsonDatas/knowledgeData.json' : '',
     /**
      *@desc 问题反馈数据

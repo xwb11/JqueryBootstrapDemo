@@ -44,6 +44,9 @@
     "stylelint-config-standard": "^18.2.0"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "echarts": "^4.1.0",
+    "highcharts": "^6.2.0",
+    "natives": "^1.1.6"
   }
 }

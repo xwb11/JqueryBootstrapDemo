@@ -32,10 +32,44 @@ body, html {
     margin-top: 1.5%;
     list-style: none;
 }
-.power-config ul li span{
-   margin-left: 1.5%;
+
+.power-config ul li span {
+    margin-left: 1.5%;
 }
+
 .content button {
     margin-top: 4%;
     width: 15%;
+}
+
+.from-button {
+    margin-left: 5%;
+}
+
+#result {
+    width: 200px;
+    height: 112px;
+    border: 1px solid #eee;
+}
+
+#result img {
+   max-width: 200px;
+   max-height: 112px;
+}
+
+/*input {*/
+    /*width: 70px;*/
+    /*margin-top: 10px;*/
+/*}*/
+#img_input2 {
+    display: none;
+}
+#img_label2 {
+    background-color: #f2d547;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px;
+}
+#preview_box2 img {
+    width: 200px;
 }

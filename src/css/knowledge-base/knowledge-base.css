@@ -18,7 +18,7 @@ body{
     background-color: #fff;
 }
 .search-head{
-    height: 50%;
+    height: 100%;
     width: 100%;
 }
 
@@ -28,13 +28,16 @@ body{
     margin-left: 1%;
 }
 .search-submit{
-    float: right;
-    width: 20%;
+    float: left;
+    width: 35%;
+margin-bottom: 2%;
 }
 .search-submit button{
-    width: 40%;
-    float: left;
-    margin-left: 5%;
+    width: 30%;
+    /*float: left;*/
+    /*margin-left: 5%;*/
+    margin-right: 2%;
+    margin-top: 2%;
 }
 .result-num{
     width: 40%;
@@ -43,11 +46,11 @@ body{
 .operation-btn{
 /*    float: right;*/
     margin-bottom: 2%;
-    margin-left: 70%;
+    /*margin-left: 70%;*/
 /*    width: 25%;*/
 }
 .operation-btn button{
-    margin-left: 3%;
+    /*margin-left: 3%;*/
 }
 .knowledge-list{
     background-color: #fff;

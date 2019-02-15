@@ -3,157 +3,164 @@
     <div class="sider-nav">
         <div class="navbar-collapse sidebar-nav">
             <ul class="nav nav-tabs nav-stacked main-menu">
-                <li style="background: #03213B;"  onclick="expendSider(event)"><a href="#"> <i class="fa fa-bars top-bar" aria-hidden="true"></i></a></li>
+                <li style="background: #03213B;" onclick="expendSider(event)"><a href="#"> <i class="fa fa-bars top-bar"
+                                                                                              aria-hidden="true"></i></a>
+                </li>
                 <!--左侧菜单栏，每一个一级菜单都需要这样一个name属性，属性值为对应模块的文件夹的名字(小驼峰)
                                 需要跳转的菜单项需要添加go属性，属性值为要跳转的页面-->
-                <li name="index" go="../index/index.html"><a href="#" ><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-tablet"> 首页</span></a></li>
-                <li name="personalCenter">
-                    <!--每一个需要二级菜单的菜单项，都需要添加my-rotate类，用来控制菜单的动画效果-->
-                    <a href="#" class="dropdown nav-a my-rotate">
-                        <i class="fa fa-address-card" aria-hidden="true"></i>
-                        <span class="hidden-tablet"> 个人中心</span>
-                        <i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown-submenu" style="display: none;">
-                        <!--每一个二级菜单，都需要这样一个name属性，值为[文件夹名称]-[跳转的页面名称(小驼峰)]
-                                需要跳转的菜单项需要添加go属性，属性值为要跳转的页面-->
-                        <li name="personalCenter-personal" go="../personal-center/personal.html"><a href="#" class="drop-a" ><i class="fa fa-address-card"></i><span class="hidden-tablet">个人中心</span></a></li>
-                        <li name="personalCenter-fileupload" go="../personal-center/fileupload.html"><a href="#" class="drop-a"><i class="fa fa-address-card"></i><span class="hidden-tablet"> 文件管理</span></a></li>
-                    </ul>
-                </li>
-                <li name="personDatabase" go="../person-database/person-database.html" ><a href="#" ><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-tablet"> 人员库</span></a></li>
-                <!--问题反馈（前台界面） 张子腾 2018-09-25-->
-                <li name="reportProblem" go="../report-problem/problem.html" ><a href="#" ><i class="fa fa-question-circle" aria-hidden="true"></i><span class="hidden-tablet"> 问题反馈</span></a></li>
-                <li name="carResult" go="../car-result/car-result.html" ><a href="#" ><i class="glyphicon glyphicon-search" aria-hidden="true"></i><span class="hidden-tablet"> 车辆查询结果</span></a></li>
-                <!--基础管理（经销商管理） 刘志杰 2018-09-25-->
+                <li name="index" go="../index/index.html"><a href="#"><i class="fa fa-home" aria-hidden="true"></i><span
+                        class="hidden-tablet"> 首页</span></a></li>
+                <!--<li name="personalCenter">-->
+                <!--&lt;!&ndash;每一个需要二级菜单的菜单项，都需要添加my-rotate类，用来控制菜单的动画效果&ndash;&gt;-->
+                <!--<a href="#" class="dropdown nav-a my-rotate">-->
+                <!--<i class="fa fa-address-card" aria-hidden="true"></i>-->
+                <!--<span class="hidden-tablet"> 个人中心</span>-->
+                <!--<i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>-->
+                <!--</a>-->
+                <!--<ul class="dropdown-submenu" style="display: none;">-->
+                <!--&lt;!&ndash;每一个二级菜单，都需要这样一个name属性，值为[文件夹名称]-[跳转的页面名称(小驼峰)]-->
+                <!--需要跳转的菜单项需要添加go属性，属性值为要跳转的页面&ndash;&gt;-->
+                <!--<li name="personalCenter-personal" go="../personal-center/personal.html"><a href="#" class="drop-a" ><i class="fa fa-address-card"></i><span class="hidden-tablet">个人中心</span></a></li>-->
+                <!--<li name="personalCenter-fileupload" go="../personal-center/fileupload.html"><a href="#" class="drop-a"><i class="fa fa-address-card"></i><span class="hidden-tablet"> 文件管理</span></a></li>-->
+                <!--</ul>-->
+                <!--</li>-->
+                <li name="reportProblem" go="../report-problem/problem.html"><a href="#"><i
+                        class="fa fa-question-circle" aria-hidden="true"></i><span
+                        class="hidden-tablet"> 订单处理</span></a></li>
                 <li name="distributorManage">
-                    <a href="#" class="dropdown nav-a my-rotate" >
-                        <i class="fa fa-address-card" aria-hidden="true"></i>
-                        <span class="hidden-tablet"> 经销商管理</span>
-                        <i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown-submenu" style="display: none;">
-                        <li name="distributorManage-distributorManage" go="../distributor-manage/distributor-users-list.html"><a href="#" class="drop-a" ><i class="fa fa-address-card"></i><span class="hidden-tablet">用户列表</span></a></li>
-                        <li name="distributorManage-distributorPowerManage" go="../distributor-manage/distributor-power-manage.html"><a href="#" class="drop-a" ><i class="fa fa-address-card"></i><span class="hidden-tablet">权限管理</span></a></li>
-
-                    </ul>
-                </li>
-                <!--王克龙-->
-                <li name="knowledgeBase">
-                    <a href="#" class="dropdown nav-a my-rotate" >
-                        <i class="fa fa-address-card" aria-hidden="true"></i>
-                        <span class="hidden-tablet"> 知识库管理</span>
-                        <i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>
-
-                    </a>
-                    <ul class="dropdown-submenu" style="display: none;">
-                        <li name="knowledgeBase-knowledgeBase" go="../knowledge-base/knowledge-base.html"><a href="#" class="drop-a" ><i class="fa fa-address-card"></i><span class="hidden-tablet">知识库列表</span></a></li>
-                    </ul>
-                </li>
-                <li name="taskManage">
-                    <a href="#" class="dropdown nav-a my-rotate" >
-                        <i class="fa fa-address-card" aria-hidden="true"></i>
-                        <span class="hidden-tablet"> 任务管理</span>
-                        <i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown-submenu" style="display: none;">
-                        <li name="taskManage-spareCatalog" go="../task-manage/vin-query.html">
-                            <a href="#" class="drop-a" >
-                                <i class="fa fa-address-card"></i>
-                                <span class="hidden-tablet">VIN查询结果</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <!--***********2018年9月27日09:19:49 宣文斌****************-->
-                <li name="questionManage" >
-                    <a href="#" class="dropdown nav-a my-rotate" >
-                        <i class="fa fa-address-card" aria-hidden="true"></i>
-                        <span class="hidden-tablet"> 答疑管理</span>
-                        <i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown-submenu" style="display: none;">
-                        <li name="questionManage-questionManage" go="../question-manage/question-manage.html">
-                            <a href="#" class="drop-a" >
-                                <i class="fa fa-address-card"></i>
-                                <span class="hidden-tablet">答疑管理</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <!--公告管理（后台界面） 宣文彬 2018-09-28-->
-                <li name="announceManagement" go="../announce-management/announce-management.html" ><a href="#" ><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-tablet"> 公告管理</span></a></li>
-                <li name="logManagement">
-                    <a href="#" class="dropdown nav-a my-rotate" >
-                        <i class="fa fa-address-card" aria-hidden="true"></i>
-                        <span class="hidden-tablet"> 日志管理</span>
-                        <i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown-submenu" style="display: none;">
-                        <li name="logManagement-operationLog" go="../log-management/operation-log.html"><a href="#" class="drop-a" ><i class="glyphicon glyphicon-calendar"></i><span class="hidden-tablet"> 操作日志</span></a></li>
-                        <li name="logManagement-sbomChangeLog" go="../log-management/sbomchange-log.html"><a href="#" class="drop-a" ><i class="glyphicon glyphicon-random"></i><span class="hidden-tablet"> SBOM变更日志</span></a></li>
-                    </ul>
-                </li>
-                <!--***********2018年9月27日09:19:49 刘笑天****************-->
-                <li name="dataManagement">
-                    <a href="#" class="dropdown nav-a my-rotate" >
-                        <i class="fa fa-address-card" aria-hidden="true"></i>
-                        <span class="hidden-tablet">数据管理</span>
-                        <i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown-submenu" style="display: none;">
-                        <li name="dataManagement-personnelConfiguration" go="../data-management/personnel-configuration.html">
-                            <a href="#" class="drop-a" >
-                                <i class="fa fa-address-card"> </i>
-                                <span class="hidden-tablet">人员配置</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li name="administratorManagement">
-                    <a href="#" class="dropdown nav-a my-rotate" >
-                        <i class="fa fa-address-card" aria-hidden="true"></i>
-                        <span class="hidden-tablet"> 管理员管理</span>
-                        <i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown-submenu" style="display: none;">
-                        <li name="administratorManagement-administratorList" go="../administrator-management/administrator-list.html"><a href="#" class="drop-a" ><i class="fa fa-address-card"></i><span class="hidden-tablet">管理员列表</span></a></li>
-                        <li name="administratorManagement-rightsManagement" go="../administrator-management/rights-management.html"><a href="#" class="drop-a" ><i class="fa fa-address-card"></i><span class="hidden-tablet">权限管理</span></a></li>
-                    </ul>
-                </li>
-                <!--cyx 20190925-->
-                <li name="announceManage">
                     <a href="#" class="dropdown nav-a my-rotate">
                         <i class="fa fa-address-card" aria-hidden="true"></i>
-                        <span class="hidden-tablet"> 公告</span>
+                        <span class="hidden-tablet"> 商品管理</span>
                         <i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>
                     </a>
                     <ul class="dropdown-submenu" style="display: none;">
-                        <li name="announceManage-announceManage" go="../announce-manage/announce-manage.html">
-                            <a href="#" class="drop-a">
-                                <i class="fa fa-address-card"></i>
-                                <span class="hidden-tablet">公告管理</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <!--系统设置 刘志杰/何培玮 2018-09-28 -->
-                <li name="systemSetting">
-                    <a href="#" class="dropdown nav-a my-rotate" >
-                        <i class="fa fa-address-card" aria-hidden="true"></i>
-                        <span class="hidden-tablet"> 系统设置</span>
-                        <i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>
-                    </a>
-                    <ul class="dropdown-submenu" style="display: none;">
-                        <!--个性化设置 刘志杰 2018-09-28-->
-                        <li name="systemSetting-personalSetting" go="../system-setting/personal-setting.html"><a href="#" class="drop-a" ><i class="fa fa-address-card"></i><span class="hidden-tablet">个性化设置</span></a></li>
-                        <!--待办事项管理 刘志杰 2018-09-28-->
-                        <li name="systemSetting-scheduleManage" go="../system-setting/schedule-manage.html"><a href="#" class="drop-a" ><i class="fa fa-address-card"></i><span class="hidden-tablet">待办事项管理</span></a></li>
-                        <!--答疑设置 刘志杰 2018-09-28-->
-                        <li name="systemSetting-answerSetting" go="../system-setting/answer-setting.html"><a href="#" class="drop-a" ><i class="fa fa-address-card"></i><span class="hidden-tablet">答疑设置</span></a></li>
+                        <li name="distributorManage-distributorManage"
+                            go="../distributor-manage/distributor-users-list.html"><a href="#" class="drop-a"><i
+                                class="fa fa-address-card"></i><span class="hidden-tablet">商品列表</span></a></li>
+                        <li name="distributorManage-distributorPowerManage"
+                            go="../distributor-manage/distributor-power-manage.html"><a href="#" class="drop-a"><i
+                                class="fa fa-address-card"></i><span class="hidden-tablet">商品录入管理</span></a></li>
 
                     </ul>
                 </li>
+
+                <li name="knowledgeBase">
+                    <a href="#" class="dropdown nav-a my-rotate">
+                        <i class="fa fa-address-card" aria-hidden="true"></i>
+                        <span class="hidden-tablet"> 商品类目管理</span>
+                        <i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>
+
+                    </a>
+                    <ul class="dropdown-submenu" style="display: none;">
+                        <li name="knowledgeBase-knowledgeBase" go="../knowledge-base/knowledge-base.html"><a href="#"
+                                                                                                             class="drop-a"><i
+                                class="fa fa-address-card"></i><span class="hidden-tablet">类目列表</span></a></li>
+                    </ul>
+                </li>
+                <!--<li name="taskManage">-->
+                <!--<a href="#" class="dropdown nav-a my-rotate" >-->
+                <!--<i class="fa fa-address-card" aria-hidden="true"></i>-->
+                <!--<span class="hidden-tablet"> 任务管理</span>-->
+                <!--<i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>-->
+                <!--</a>-->
+                <!--<ul class="dropdown-submenu" style="display: none;">-->
+                <!--<li name="taskManage-spareCatalog" go="../task-manage/vin-query.html">-->
+                <!--<a href="#" class="drop-a" >-->
+                <!--<i class="fa fa-address-card"></i>-->
+                <!--<span class="hidden-tablet">VIN查询结果</span>-->
+                <!--</a>-->
+                <!--</li>-->
+                <!--</ul>-->
+                <!--</li>-->
+                <!--***********2018年9月27日09:19:49 宣文斌****************-->
+                <!--<li name="questionManage" >-->
+                <!--<a href="#" class="dropdown nav-a my-rotate" >-->
+                <!--<i class="fa fa-address-card" aria-hidden="true"></i>-->
+                <!--<span class="hidden-tablet"> 答疑管理</span>-->
+                <!--<i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>-->
+                <!--</a>-->
+                <!--<ul class="dropdown-submenu" style="display: none;">-->
+                <!--<li name="questionManage-questionManage" go="../question-manage/question-manage.html">-->
+                <!--<a href="#" class="drop-a" >-->
+                <!--<i class="fa fa-address-card"></i>-->
+                <!--<span class="hidden-tablet">答疑管理</span>-->
+                <!--</a>-->
+                <!--</li>-->
+                <!--</ul>-->
+                <!--</li>-->
+                <!--公告管理（后台界面） 宣文彬 2018-09-28-->
+                <!--<li name="announceManagement" go="../announce-management/announce-management.html" ><a href="#" ><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-tablet"> 公告管理</span></a></li>-->
+                <!--<li name="logManagement">-->
+                <!--<a href="#" class="dropdown nav-a my-rotate" >-->
+                <!--<i class="fa fa-address-card" aria-hidden="true"></i>-->
+                <!--<span class="hidden-tablet"> 日志管理</span>-->
+                <!--<i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>-->
+                <!--</a>-->
+                <!--<ul class="dropdown-submenu" style="display: none;">-->
+                <!--<li name="logManagement-operationLog" go="../log-management/operation-log.html"><a href="#" class="drop-a" ><i class="glyphicon glyphicon-calendar"></i><span class="hidden-tablet"> 操作日志</span></a></li>-->
+                <!--<li name="logManagement-sbomChangeLog" go="../log-management/sbomchange-log.html"><a href="#" class="drop-a" ><i class="glyphicon glyphicon-random"></i><span class="hidden-tablet"> SBOM变更日志</span></a></li>-->
+                <!--</ul>-->
+                <!--</li>-->
+                <!--***********2018年9月27日09:19:49 刘笑天****************-->
+                <!--<li name="dataManagement">-->
+                <!--<a href="#" class="dropdown nav-a my-rotate" >-->
+                <!--<i class="fa fa-address-card" aria-hidden="true"></i>-->
+                <!--<span class="hidden-tablet">数据管理</span>-->
+                <!--<i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>-->
+                <!--</a>-->
+                <!--<ul class="dropdown-submenu" style="display: none;">-->
+                <!--<li name="dataManagement-personnelConfiguration" go="../data-management/personnel-configuration.html">-->
+                <!--<a href="#" class="drop-a" >-->
+                <!--<i class="fa fa-address-card"> </i>-->
+                <!--<span class="hidden-tablet">人员配置</span>-->
+                <!--</a>-->
+                <!--</li>-->
+                <!--</ul>-->
+                <!--</li>-->
+                <!--<li name="administratorManagement">-->
+                <!--<a href="#" class="dropdown nav-a my-rotate" >-->
+                <!--<i class="fa fa-address-card" aria-hidden="true"></i>-->
+                <!--<span class="hidden-tablet"> 管理员管理</span>-->
+                <!--<i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>-->
+                <!--</a>-->
+                <!--<ul class="dropdown-submenu" style="display: none;">-->
+                <!--<li name="administratorManagement-administratorList" go="../administrator-management/administrator-list.html"><a href="#" class="drop-a" ><i class="fa fa-address-card"></i><span class="hidden-tablet">管理员列表</span></a></li>-->
+                <!--<li name="administratorManagement-rightsManagement" go="../administrator-management/rights-management.html"><a href="#" class="drop-a" ><i class="fa fa-address-card"></i><span class="hidden-tablet">权限管理</span></a></li>-->
+                <!--</ul>-->
+                <!--</li>-->
+                <!--cyx 20190925-->
+                <!--<li name="announceManage">-->
+                <!--<a href="#" class="dropdown nav-a my-rotate">-->
+                <!--<i class="fa fa-address-card" aria-hidden="true"></i>-->
+                <!--<span class="hidden-tablet"> 公告</span>-->
+                <!--<i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>-->
+                <!--</a>-->
+                <!--<ul class="dropdown-submenu" style="display: none;">-->
+                <!--<li name="announceManage-announceManage" go="../announce-manage/announce-manage.html">-->
+                <!--<a href="#" class="drop-a">-->
+                <!--<i class="fa fa-address-card"></i>-->
+                <!--<span class="hidden-tablet">公告管理</span>-->
+                <!--</a>-->
+                <!--</li>-->
+                <!--</ul>-->
+                <!--</li>-->
+                <!--系统设置 刘志杰/何培玮 2018-09-28 -->
+                <!--<li name="systemSetting">-->
+                <!--<a href="#" class="dropdown nav-a my-rotate" >-->
+                <!--<i class="fa fa-address-card" aria-hidden="true"></i>-->
+                <!--<span class="hidden-tablet"> 系统设置</span>-->
+                <!--<i class="fa fa-address-card fa-angle-right rotate-icon" aria-hidden="true"></i>-->
+                <!--</a>-->
+                <!--<ul class="dropdown-submenu" style="display: none;">-->
+                <!--&lt;!&ndash;个性化设置 刘志杰 2018-09-28&ndash;&gt;-->
+                <!--<li name="systemSetting-personalSetting" go="../system-setting/personal-setting.html"><a href="#" class="drop-a" ><i class="fa fa-address-card"></i><span class="hidden-tablet">个性化设置</span></a></li>-->
+                <!--&lt;!&ndash;待办事项管理 刘志杰 2018-09-28&ndash;&gt;-->
+                <!--<li name="systemSetting-scheduleManage" go="../system-setting/schedule-manage.html"><a href="#" class="drop-a" ><i class="fa fa-address-card"></i><span class="hidden-tablet">待办事项管理</span></a></li>-->
+                <!--&lt;!&ndash;答疑设置 刘志杰 2018-09-28&ndash;&gt;-->
+                <!--<li name="systemSetting-answerSetting" go="../system-setting/answer-setting.html"><a href="#" class="drop-a" ><i class="fa fa-address-card"></i><span class="hidden-tablet">答疑设置</span></a></li>-->
+
+                <!--</ul>-->
+                <!--</li>-->
 
             </ul>
         </div>

@@ -7,6 +7,32 @@
 /**************************************************************工具方法*************************************************************/
 
 /**
+ * 时间戳转换工具
+ * @param str
+ * @returns {string}
+ */
+function getMyDate(str) {
+    var oDate = new Date(str),
+        oYear = oDate.getFullYear(),
+        oMonth = oDate.getMonth() + 1,
+        oDay = oDate.getDate(),
+        oHour = oDate.getHours(),
+        oMin = oDate.getMinutes(),
+        oSen = oDate.getSeconds(),
+        oTime = oYear + '-' + getzf(oMonth) + '-' + getzf(oDay) + ' ' + getzf(oHour) + ':' + getzf(oMin) + ':' + getzf(oSen);//最后拼接时间
+    return oTime;
+}
+//时间戳转时间——补0操作
+function getzf(num) {
+    if (parseInt(num) < 10) {
+        num = '0' + num;
+    }
+    return num;
+}
+
+
+
+/**
  * @Desc 时间戳格式转换(fmt:时间格式化)
  * new Date(value).Format("yyyy-MM-dd")
  */
@@ -507,7 +533,7 @@ let poptip;
                 break;
         }
 
-        $(_this).on('input',function() {
+        $(t_this).on('input',function() {
             warn.html('');
             warn.hide();
         })
