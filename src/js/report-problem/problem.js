@@ -66,6 +66,7 @@ function tableInit(tableUrl,cond) {
         detailView: false,                  //是否显示父子表
         //得到查询的参数
         queryParams : function (params) {
+            console.log(params)
             //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
             var temp;
             //模糊查询
@@ -73,7 +74,7 @@ function tableInit(tableUrl,cond) {
                 temp = {
                     buyerName: $("#select-name").val(),
                     buyerPhone:$("#select-iphone").val(),
-                    pageSize:10,
+                    pageSize:params.limit,
                     rows: params.limit,                         //页面大小
                     page: (params.offset / params.limit) + 1,   //页码
                     sort: params.sort,      //排序列名
@@ -82,10 +83,10 @@ function tableInit(tableUrl,cond) {
                 return JSON.stringify(temp);
             } else {
                 temp = {
-                    rows: params.limit,                         //页面大小
+                    pageSize: params.limit,                         //页面大小
                     page: (params.offset / params.limit) + 1,   //页码
                     sort: params.sort,      //排序列名
-                    sortOrder: params.order //排位命令（desc，asc）
+                    sortOrder: params.order, //排位命令（desc，asc）
                 };
                 return JSON.stringify(temp);
             }
