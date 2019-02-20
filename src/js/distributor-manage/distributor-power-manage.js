@@ -4,7 +4,7 @@
 
 var SELECT_CATEGORY_URL = requestUrl + "api/generate/productCategory/selectProductCategory" //类目查询
 var INSERT_PRODUCT_URL = requestUrl + "api/generate/productInfo/addProductInfo"; //url地址 商品新增
-var IMG_URL = requestUrl + "api/generate/productInfo/imgUpload"; //url地址 上传照片
+var IMG_URL = requestUrl + "api/generate/productInfo/upload"; //url地址 上传照片
 
 $(function () {
     $('#select-category').empty();
@@ -29,31 +29,35 @@ $(function () {
 })
 
 $("#img_input2").on("change", function (e) {
-    var file = e.target.files[0]; //获取图片资源
+    let file = e.target.files[0]; //获取图片资源
     // 只选择图片文件
     if (!file.type.match('image.*')) {
         return false;
     }
-    // $("#preview_box2").val("../../images/" + file.name);
-    // console.log($("#preview_box2").val());
-    var reader = new FileReader();
+    console.log(file)
+    let form = new FormData();                    //创建一个FormData对象
+    form.append("file", file);            //将文件放到FormData对象中
+    console.log(form);
+
+    let reader = new FileReader();
     reader.readAsDataURL(file); // 读取文件
     // 渲染文件
     reader.onload = function (arg) {
         var name = file.name;
+        console.log(name)
         var img = '<img class="preview" src="' + arg.target.result + '" alt="preview"/>';
         $("#preview_box2").empty().append(img);
-        // console.log($("img").attr("src"));
-        var src = $("img").attr("src");
         $.ajax({
             url: IMG_URL,
-            type: requestJson ? 'get' : 'post',
+            type: 'post',
             data: {
-                data: src,
-                name: name
+                file: "file",
+                Filetype: '1',
             },
             dataType: "json",
             // contentType: "application/json;charset=utf-8",
+            contentType: false,
+            processData: false,    //不可缺
             success: function (data) {
                 console.log(data)
                 $("#preview_box2").val(data.data);
@@ -61,6 +65,7 @@ $("#img_input2").on("change", function (e) {
             }
         })
     }
+
 
 });
 
@@ -71,7 +76,7 @@ $("#saveProduct").click(function () {
         productPrice: $("#product-price").val(),
         productStock: $("#product-stock").val(),
         productDescription: $("#product-idcardnumber").val(),
-        productIcon: $("#preview_box2").val(),
+        productIcon: $("#picValue").val(),
         categoryType: $("#select-category").val()
     }
 
@@ -95,50 +100,51 @@ $("#saveProduct").click(function () {
     })
 })
 
-// function selectFile() {
-//     var form = new FormData();//通过HTML表单创建FormData对象
-//
-//     var files = document.getElementById('pic').files;
-//     console.log(121313)
-//     console.log(files[0]);
-//     if (files.length == 0) {
-//         return;
-//     }
-//     var file = files[0];
-//     //把上传的图片显示出来
-//     var reader = new FileReader();
-//     // 将文件以Data URL形式进行读入页面
-//     console.log(reader);
-//     console.log(file.name)
-//     reader.readAsBinaryString(file);
-//     reader.onload = function (f) {
-//         var result = document.getElementById("result");
-//         var src = "data:" + file.type + ";base64," + window.btoa(this.result);
-//         result.innerHTML = '<img id="img" src ="' + src + '"/>';
-//         $("#pic").text(src)
-//         // $.ajax({
-//         //     url: IMG_URL,
-//         //     type: requestJson ? 'get' : 'post',
-//         //     data: {
-//         //         data: src,
-//         //         fileName: file.name
-//         //     },
-//         //     dataType: "json",
-//         //     // contentType: "application/json;charset=utf-8",
-//         //     success: function (value) {
-//         //         console.log("上传文件返回")
-//         //         console.log(value)
-//         //         $("#pic").text(src)
-//         //     }
-//         // })
-//     }
-//     form.append('file', file);
-//     console.log(form.get('file').name)
-//     console.log("==========")
-//     // var before = "../../images/" + form.get('file').name;
-//     //
-//     // $("#pic").text(before);
-//     console.log($("#pic").text())
-// }
+function selectFile() {
+    var form = new FormData();//通过HTML表单创建FormData对象
+
+    var files = document.getElementById('pic').files;
+    console.log(121313)
+    console.log(files[0]);
+    if (files.length == 0) {
+        return;
+    }
+    var file = files[0];
+    //把上传的图片显示出来
+    var reader = new FileReader();
+    // 将文件以Data URL形式进行读入页面
+    console.log(reader);
+    console.log(file.name)
+    reader.readAsBinaryString(file);
+    reader.onload = function (f) {
+        var result = document.getElementById("result");
+        var src = "data:" + file.type + ";base64," + window.btoa(this.result);
+        result.innerHTML = '<img id="img" src ="' + src + '"/>';
+        $("#pic").text(src)
+        $.ajax({
+            url: IMG_URL,
+            type: requestJson ? 'get' : 'post',
+            data: {
+                data: src,
+            },
+            dataType: "json",
+            // contentType: "application/json;charset=utf-8",
+            success: function (value) {
+                console.log("上传文件返回")
+                console.log(value.data)
+                let index = value.data.lastIndexOf("/");
+                let url = value.data.substring(index + 1, value.data.length);
+                let path = "http://localhost:8082/1/" + url;
+                console.log(path)
+                $("#picValue").val(path);
+                console.log($("#picValue").val())
+                // console.log($("#pic").text(path));
+                // console.log($("#pic").text()[0].textContent);
+            }
+        })
+    }
+    form.append('file', file);
+
+}
 
 

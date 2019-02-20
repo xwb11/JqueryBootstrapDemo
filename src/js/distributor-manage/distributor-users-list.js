@@ -7,11 +7,12 @@ var SELECT_PRODUCT_URL = requestUrl + "api/generate/productInfo/queryByPage"; //
 var INSERT_PRODUCT_URL = requestUrl + "api/generate/productInfo/addProductInfo"; //url地址 类目新增
 var DELETE_PRODUCT_URL = requestUrl + "api/generate/productInfo/deleteProductInfo"; //url地址删除
 var UPDATE_PRODUCT_URL = requestUrl + "api/generate/productInfo/updateProductInfo" //url地址 更新
-
-
+var SELECT_CATEGORY_URL = requestUrl + "api/generate/productCategory/selectProductCategory" //类目查询
+var IMG_URL = requestUrl + "api/generate/productInfo/upload"; //url地址 上传照片
 //经销商管理（用户列表） 刘志杰 2018-09-25
 $(function () {
     TableInit();//表格初始化
+
 })
 
 /**
@@ -182,6 +183,7 @@ function TableInit() {
 
 function upateProduct() {
     let checkboxTable = $("#show-table-distributor-users").bootstrapTable('getSelections');
+    console.log("修改操作")
     console.log(checkboxTable);
     //模态框标题
     $("#show-model-title").html('<h4>' + ' 修改商品' + '</h4>')
@@ -189,7 +191,7 @@ function upateProduct() {
     $("#basicinfo-input-price").val(checkboxTable[0].productPrice)
     $("#basicinfo-input-age").val(checkboxTable[0].productStock)
     $("#basicinfo-input-idcardnumber").val(checkboxTable[0].productDescription)
-    $("#pic").val(checkboxTable[0].productIcon)
+    $("#picValue").val(checkboxTable[0].productIcon)
     $("#select-category").val()
     getBaseOptionFun();
 }
@@ -255,20 +257,22 @@ function upProduct() {
 
 //保存按钮
 $("#addCategory").on("click", function () {
-    let checkboxTable = $("#knowledge-table").bootstrapTable('getSelections');
+    let checkboxTable = $("#show-table-distributor-users").bootstrapTable('getSelections');
     console.log(checkboxTable);
-    if ($("#show-model-title").html() == '<h4>' + ' 修改类目' + '</h4>') {
+    console.log($("#picValue").val())
+    console.log($("#show-model-title").html())
+    if ($("#show-model-title").html() == '<h4>' + ' 修改商品' + '</h4>') {
         var UPDATECATEGORY = {
-            "productId": checkboxTable[0].categoryId,
+            "productId": checkboxTable[0].productId,
             "productName": $("#basicinfo-input-realname").val(),
             "productPrice": $("#basicinfo-input-price").val(),
             "productStock": $("#basicinfo-input-age").val(),
             "productDescription": $("#basicinfo-input-idcardnumber").val(),
-            "productIcon": $("#pic").val(),
+            "productIcon": $("#picValue").val(),
             "categoryType": $("#select-category").val(),
         };
         $.ajax({
-            url: UPDATE_CATEGORY_URL,
+            url: UPDATE_PRODUCT_URL,
             type: requestJson ? 'get' : 'post',
             data: JSON.stringify(UPDATECATEGORY),
             dataType: "json",
@@ -277,11 +281,11 @@ $("#addCategory").on("click", function () {
                 if (data.ok) {
                     poptip.alert(POP_TIP.updateSuccess);
                     $("#add-modal").modal("hide");
-                    $('#knowledge-table').bootstrapTable("refresh");
+                    $('#show-table-distributor-users').bootstrapTable("refresh");
                 } else {
                     poptip.alert(POP_TIP.updateFail);
                     $("#add-modal").modal("hide");
-                    $('#knowledge-table').bootstrapTable("refresh");
+                    $('#show-table-distributor-users').bootstrapTable("refresh");
                 }
             }
         })
@@ -298,9 +302,7 @@ function getBaseOptionFun() {
         contentType: "application/json;charset=utf-8",
         success: function (data) {
             if (data.ok) {
-                console.log("--------------------")
                 console.log(data)
-                console.log(data.data.length)
                 //遍历得到类目名称
                 for (var i = 0; i < data.data.length; i++) {
                     $("#select-category").append("<option value='" + data.data[i].categoryType + "'>"
@@ -312,52 +314,51 @@ function getBaseOptionFun() {
     })
 }
 
-// $("#select-category").click(function () {
-//     getBaseOptionFun();
-// })
-// function selectFile() {
-//     var form = new FormData();//通过HTML表单创建FormData对象
-//
-//     var files = document.getElementById('pic').files;
-//     console.log(121313)
-//     console.log(files[0]);
-//     if (files.length == 0) {
-//         return;
-//     }
-//     var file = files[0];
-//     //把上传的图片显示出来
-//     var reader = new FileReader();
-//     // 将文件以Data URL形式进行读入页面
-//     console.log(reader);
-//     reader.readAsBinaryString(file);
-//     reader.onload = function (f) {
-//         var result = document.getElementById("result");
-//         var src = "data:" + file.type + ";base64," + window.btoa(this.result);
-//         result.innerHTML = '<img src ="' + src + '"/>';
-//
-//     }
-//     console.log('file', file);
-//     ///////////////////
-//     form.append('file', file);
-//     console.log(form.get('file'));
-//     console.log(form.get('file').name)
-//     console.log("==========")
-//     console.log($("#pic").val())
-//     // var xhr = new XMLHttpRequest();
-//     // xhr.open("post", url, true);
-// }
-$("#img_input2").on("change", function (e) {
-    var file = e.target.files[0]; //获取图片资源
-    // 只选择图片文件
-    if (!file.type.match('image.*')) {
-        return false;
+function selectFile() {
+    var form = new FormData();//通过HTML表单创建FormData对象
+
+    var files = document.getElementById('pic').files;
+    console.log(121313)
+    console.log(files[0]);
+    if (files.length == 0) {
+        return;
     }
+    var file = files[0];
+    //把上传的图片显示出来
     var reader = new FileReader();
-    reader.readAsDataURL(file); // 读取文件
-    // 渲染文件
-    reader.onload = function (arg) {
-        var img = '<img class="preview" src="' + arg.target.result + '" alt="preview"/>';
-        $("#preview_box2").empty().append(img);
+    // 将文件以Data URL形式进行读入页面
+    console.log(reader);
+    console.log(file.name)
+    reader.readAsBinaryString(file);
+    reader.onload = function (f) {
+        var result = document.getElementById("result");
+        var src = "data:" + file.type + ";base64," + window.btoa(this.result);
+        result.innerHTML = '<img id="img" src ="' + src + '"/>';
+        $("#pic").text(src)
+        $.ajax({
+            url: IMG_URL,
+            type: requestJson ? 'get' : 'post',
+            data: {
+                data: src,
+            },
+            dataType: "json",
+            // contentType: "application/json;charset=utf-8",
+            success: function (value) {
+                console.log("上传文件返回")
+                console.log(value.data)
+                let index = value.data.lastIndexOf("/");
+                let url = value.data.substring(index + 1, value.data.length);
+                let path = "http://localhost:8082/1/" + url;
+                console.log(path)
+                $("#picValue").val(path);
+                console.log($("#picValue").val())
+                // console.log($("#pic").text(path));
+                // console.log($("#pic").text()[0].textContent);
+            }
+        })
     }
-});
+    form.append('file', file);
+
+}
+
 
